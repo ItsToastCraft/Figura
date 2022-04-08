@@ -5,6 +5,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.blancworks.figura.lua.CustomScript;
 import net.blancworks.figura.lua.api.NBTAPI;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.argument.ItemStackArgumentType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -14,6 +15,7 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.StringNbtReader;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.DynamicRegistryManager;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import org.luaj.vm2.*;
@@ -247,7 +249,7 @@ public class ItemStackAPI {
             return item;
 
         try {
-            return ItemStackArgumentType.itemStack().parse(new StringReader(arg1.checkjstring())).createStack(1, false);
+            return ItemStackArgumentType.itemStack(new CommandRegistryAccess(DynamicRegistryManager.BUILTIN.get())).parse(new StringReader(arg1.checkjstring())).createStack(1, false);
         } catch (CommandSyntaxException e) {
             throw new LuaError("Could not create item stack\n" + e.getMessage());
         }

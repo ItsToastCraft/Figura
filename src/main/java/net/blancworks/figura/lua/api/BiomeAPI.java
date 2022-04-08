@@ -7,7 +7,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.luaj.vm2.LuaError;
@@ -15,8 +14,6 @@ import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.TwoArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
-
-import java.util.Optional;
 
 public class BiomeAPI {
 
@@ -58,15 +55,6 @@ public class BiomeAPI {
                 public LuaValue call() {
                     Identifier identifier = world.getRegistryManager().get(Registry.BIOME_KEY).getId(biome);
                     return identifier == null ? NIL : LuaValue.valueOf(identifier.toString());
-                }
-            });
-
-            set("getCategory", new ZeroArgFunction() {
-                @Override
-                public LuaValue call() {
-                    Registry<Biome> biomeRegistry = world.getRegistryManager().get(Registry.BIOME_KEY);
-                    Optional<RegistryKey<Biome>> key = biomeRegistry.getKey(biome);
-                    return LuaValue.valueOf(Biome.getCategory(biomeRegistry.entryOf(key.get())).getName());
                 }
             });
 

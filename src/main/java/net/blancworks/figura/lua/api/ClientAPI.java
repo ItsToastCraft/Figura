@@ -173,14 +173,14 @@ public class ClientAPI {
             set("getGUIScale", new ZeroArgFunction() {
                 @Override
                 public LuaValue call() {
-                    return LuaValue.valueOf(MinecraftClient.getInstance().options.guiScale);
+                    return LuaValue.valueOf(MinecraftClient.getInstance().options.getGuiScale().getValue());
                 }
             });
 
             set("getFov", new ZeroArgFunction() {
                 @Override
                 public LuaValue call() {
-                    return LuaValue.valueOf(MinecraftClient.getInstance().options.fov);
+                    return LuaValue.valueOf(MinecraftClient.getInstance().options.getFov().getValue());
                 }
             });
 

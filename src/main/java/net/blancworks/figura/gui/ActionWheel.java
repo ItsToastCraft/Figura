@@ -277,7 +277,7 @@ public class ActionWheel extends DrawableHelper {
                 switch (cust.texture) {
                     case Cape -> textureId = Objects.requireNonNullElse(data.playerListEntry.getCapeTexture(), FiguraTexture.DEFAULT_ID);
                     case Elytra -> textureId = Objects.requireNonNullElse(data.playerListEntry.getElytraTexture(), FiguraTexture.ELYTRA_ID);
-                    case Resource -> textureId = MinecraftClient.getInstance().getResourceManager().containsResource(cust.texturePath) ? cust.texturePath : MissingSprite.getMissingSpriteId();
+                    case Resource -> textureId = MinecraftClient.getInstance().getResourceManager().getResource(cust.texturePath).isPresent() ? cust.texturePath : MissingSprite.getMissingSpriteId();
                     case Skin -> textureId = data.playerListEntry.getSkinTexture();
                     case Custom -> textureId = data.texture != null ? data.texture.id : MissingSprite.getMissingSpriteId();
                     default -> textureId = FiguraTexture.DEFAULT_ID;

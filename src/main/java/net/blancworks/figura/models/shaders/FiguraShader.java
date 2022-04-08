@@ -8,19 +8,13 @@ import net.minecraft.client.render.Shader;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceFactory;
-import net.minecraft.resource.metadata.ResourceMetadataReader;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FiguraShader extends Shader {
 
@@ -186,39 +180,8 @@ public class FiguraShader extends Shader {
         }
 
         @Override
-        public Resource getResource(Identifier id) {
-            return new Resource() {
-                @Override
-                public Identifier getId() {
-                    return id;
-                }
-
-                @Override
-                public InputStream getInputStream() {
-                    return new ByteArrayInputStream(sources[i++].getBytes());
-                }
-
-                @Override
-                public boolean hasMetadata() {
-                    return false;
-                }
-
-                @Nullable
-                @Override
-                public <T> T getMetadata(ResourceMetadataReader<T> metaReader) {
-                    return null;
-                }
-
-                @Override
-                public String getResourcePackName() {
-                    return "Custom Figura Render Layers";
-                }
-
-                @Override
-                public void close() {
-                    //I don't think this needs to do anything?
-                }
-            };
+        public Optional<Resource> getResource(Identifier id) {
+            return Optional.of(new Resource("Custom Figura Render Layers", () -> new ByteArrayInputStream(sources[i++].getBytes())));
         }
     }
 

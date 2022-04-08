@@ -148,7 +148,7 @@ public class FiguraMod implements ClientModInitializer {
                 LocalAvatarManager.loadResourceAvatars(manager);
 
                 try {
-                    cheese = NbtIo.readCompressed(manager.getResource(new Identifier("figura", "cheese/cheese.moon")).getInputStream());
+                    cheese = NbtIo.readCompressed(manager.getResource(new Identifier("figura", "cheese/cheese.moon")).get().getInputStream());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

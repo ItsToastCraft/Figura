@@ -328,7 +328,7 @@ public class CustomModelPart {
         Identifier textureId = null;
 
         if (textureType == TextureType.Resource) {
-            textureId = MinecraftClient.getInstance().getResourceManager().containsResource(textureVanilla) ? textureVanilla : MissingSprite.getMissingSpriteId();
+            textureId = MinecraftClient.getInstance().getResourceManager().getResource(textureVanilla).isPresent() ? textureVanilla : MissingSprite.getMissingSpriteId();
         } else if (textureType == TextureType.Elytra) {
             if (data.playerListEntry != null)
                 textureId = data.playerListEntry.getElytraTexture();

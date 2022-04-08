@@ -74,7 +74,7 @@ dependencies {
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"*/
 
 	//ModMenu
-	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	//modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
 	//Iris
 	modCompileOnly "maven.modrinth:iris:${project.iris_version}"

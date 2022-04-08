@@ -211,16 +211,17 @@ public class LocalAvatarManager {
         RESOURCE_FOLDER.children.clear();
 
         //find all moon files inside the avatar folder
-        Collection<Identifier> resources = manager.findResources("avatars", s -> s.endsWith(".moon"));
+        Map<Identifier, Resource> resources = manager.findResources("avatars", identifier -> identifier.getPath().endsWith(".moon"));
 
-        for (Identifier id : resources) {
+        for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
+            Identifier id = entry.getKey();
+            Resource res = entry.getValue();
+
             try {
                 //get name and its upper-folders
                 String[] split = id.getPath().split("/");
                 String name = split[split.length - 1];
                 name = name.substring(0, name.length() - 5);
-
-                Resource res = manager.getResource(id);
 
                 //get root folder (resource pack name)
                 String folder = res.getResourcePackName();
