@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TextUtils {
     public static String noBadges4U(String string) {
-        return string.replaceAll("([▲★✯☆✭]|\\\\u(?i)(25B2|2605|272F|2606|272D))", "\uFFFD");
+        return string.replaceAll("([△▲!❤☆✯★]|\\\\u(?i)(25B3|25B2|0021|2764|2606|272F|2605))", "\uFFFD");
     }
 
     public static List<Text> splitText(Text text, String regex) {
