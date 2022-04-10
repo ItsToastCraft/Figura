@@ -75,6 +75,10 @@ public class ParticleAPI {
                             BlockState state = BlockStateAPI.checkOrCreateBlockState(arg3);
                             particle = new BlockStateParticleEffect(ParticleTypes.BLOCK_MARKER, state);
                         }
+                        case "minecraft:shriek" -> {
+                            int delay = arg3.checkint();
+                            particle = new ShriekParticleEffect(delay);
+                        }
                         //4 argos
                         case "minecraft:dust_color_transition" -> {
                             LuaVector fromColor = LuaVector.checkOrNew(arg3);
