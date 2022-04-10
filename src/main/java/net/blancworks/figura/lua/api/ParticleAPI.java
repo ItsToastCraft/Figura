@@ -79,6 +79,10 @@ public class ParticleAPI {
                             int delay = arg3.checkint();
                             particle = new ShriekParticleEffect(delay);
                         }
+                        case "minecraft:sculk_charge" -> {
+                            float roll = arg3.checknumber().tofloat();
+                            particle = new SculkChargeParticleEffect(roll);
+                        }
                         //4 argos
                         case "minecraft:dust_color_transition" -> {
                             LuaVector fromColor = LuaVector.checkOrNew(arg3);
