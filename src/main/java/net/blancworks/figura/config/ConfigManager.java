@@ -114,7 +114,7 @@ public final class ConfigManager {
                     new TranslatableText(path + "4")
             );
         }},
-        BACKEND_PATH("figuranew.blancworks.org", InputType.ANY);
+        BACKEND_PATH("figura.moonlight-devs.org", InputType.ANY);
 
         //config data
         public Object value;
